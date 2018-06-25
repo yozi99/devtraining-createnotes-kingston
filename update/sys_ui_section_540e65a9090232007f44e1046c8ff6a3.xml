@@ -9,7 +9,7 @@
             <sys_id>2c0e65a9090232007f44e1046c8ff6b3</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
-            <sys_ui_section caption="New Section" display_value="New Section" name="x_snc_createnotes_note" sys_domain="global" view="Default view">540e65a9090232007f44e1046c8ff6a3</sys_ui_section>
+            <sys_ui_section caption="New Section" display_value="新規セクション" name="x_snc_createnotes_note" sys_domain="global" view="Default view">540e65a9090232007f44e1046c8ff6a3</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2017-04-10 15:59:47</sys_updated_on>
             <sys_user/>
@@ -23,7 +23,7 @@
             <sys_id>ac0e65a9090232007f44e1046c8ff6b3</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
-            <sys_ui_section caption="New Section" display_value="New Section" name="x_snc_createnotes_note" sys_domain="global" view="Default view">540e65a9090232007f44e1046c8ff6a3</sys_ui_section>
+            <sys_ui_section caption="New Section" display_value="新規セクション" name="x_snc_createnotes_note" sys_domain="global" view="Default view">540e65a9090232007f44e1046c8ff6a3</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2017-04-10 15:59:47</sys_updated_on>
             <sys_user/>
@@ -51,7 +51,7 @@
             <sys_updated_on>2017-04-10 15:59:46</sys_updated_on>
             <sys_user/>
             <title>false</title>
-            <view display_value="Default view" name="NULL">Default view</view>
+            <view display_value="デフォルトビュー" name="NULL">Default view</view>
             <view_name/>
         </sys_ui_section>
     </sys_ui_section>
