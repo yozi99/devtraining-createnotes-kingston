@@ -5,7 +5,7 @@
 	/* widget controller */
 	var c = this;
 	// Use a position indicator to know which record to update
-	c.notePos = 0;
+	 c.notePos = 0;
 
 	c.selectItem = function(idx) {  
 		// Set the position indicator to the index value passed in on select
@@ -15,12 +15,6 @@
 		$rootScope.noteID = id;
 		$rootScope.$emit('selectNote', id);
 	}
-	// Subscribe to event.  Set the new title and note values on the 
-	// c.data object
-	$rootScope.$on('updateTitle', function(event,data) { 
-		c.data.notes[c.notePos].title = data.title;
-		c.data.notes[c.notePos].note = data.note;
-	});
 
 	c.newNote = function() {
 		c.server.get({
@@ -33,12 +27,7 @@
 		});
 	}
 
-	$rootScope.$on('deleteNote', function(event,data) {
-		c.data.notes.splice($scope.notePos, 1);
-	});
-	// Record removed from data object on the client and passed to server
 	c.snNoteUpdate = function(name,sysID){
-
 		for (var i=0;i<c.data.notes.length;i++){
 			if(c.data.notes[i].sys_id == name.data.sys_id){
 				if(name.data.record.note){
@@ -48,14 +37,12 @@
 					c.data.notes[i].title = name.data.record.title.display_value;
 				}
 				c.server.update();
-
 			}
 		}
 	}
 	
 	// Record removed from data object on the server and passed back to client
 	c.snNoteDelete = function(sysID){
-
 		c.server.get({
 			action: 'snDeleteNote',
 			noteID: sysID
@@ -63,8 +50,19 @@
 		}).then(function(r){
 			c.data.notes = r.data.notes;
 		});
-
 	}
+
+	// Subscribe to event.  Set the new title and note values on the 
+	// c.data object
+	$rootScope.$on('updateTitle', function(event,data) { 
+		c.data.notes[c.notePos].title = data.title;
+		c.data.notes[c.notePos].note = data.note;
+	});
+
+	$rootScope.$on('deleteNote', function(event,data) {
+		c.data.notes.splice($scope.notePos, 1);
+	});
+	// Record removed from data object on the client and passed to server
 
 	spUtil.recordWatch($scope, "x_snc_createnotes_note", "numberANYTHING", function(name) {
 		console.log(name.data.oeration);
@@ -84,17 +82,6 @@
 			c.snNoteDelete(name.data.sys_id);
 		}
 	});
-	
-	$rootScope.$on('selectNote', function(event,data) {
-			c.server.get({
-				action: 'getNote',
-				noteID: $rootScope.noteID
-			}).then(function(r) {
-				c.data.title = r.data.note.title;
-				c.data.note = r.data.note.note;
-				c.data.noteID = r.data.note.sys_id;
-			});
-		});
 }
 ]]></client_script>
         <controller_as>c</controller_as>
@@ -121,7 +108,7 @@
 	var noteGR = new GlideRecord('x_snc_createnotes_note');
 	noteGR.addQuery('user', gs.getUser().getID());
 	noteGR.orderByDesc('sys_created_on');
-	noteGR.setLimit(options.maximum_recoreds_to_display);
+	noteGR.setLimit(options.maximum_records_to_display);
 	noteGR.query();
 	while (noteGR.next()) {
 		var noteObj = {};
@@ -160,14 +147,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-10-14 01:08:53</sys_created_on>
         <sys_id>296321a54f7d4f004e584b8d0210c7a9</sys_id>
-        <sys_mod_count>29</sys_mod_count>
+        <sys_mod_count>41</sys_mod_count>
         <sys_name>Notes List</sys_name>
         <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
         <sys_policy/>
         <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
         <sys_update_name>sp_widget_296321a54f7d4f004e584b8d0210c7a9</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-07-04 07:31:49</sys_updated_on>
+        <sys_updated_on>2018-07-12 00:54:42</sys_updated_on>
         <template><![CDATA[<div class="panel panel-default">
   <div class="panel-heading clearfix">
     <h3 class="panel-title pull-left">
